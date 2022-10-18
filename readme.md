@@ -2,11 +2,11 @@
 
 I use `python -m http.server` a lot, but it likes to complain about broken pipes. This seems to be working a bit better
 
-###### installation 
+###### installation
 
-`$ go get -u go.senan.xyz/serve`
+`$ go install go.senan.xyz/serve@latest`
 
-###### usage 
+###### usage
 
 ```
 $ serve [host]:<port>
