@@ -5,9 +5,11 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"path/filepath"
 )
 
 func main() {
+	download := flag.Bool("download", false, "set headers to prompt to download")
 	flag.Parse()
 
 	addr := flag.Arg(0)
@@ -29,6 +31,10 @@ func main() {
 	switch {
 	case info.Mode().IsRegular():
 		hander = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			if *download {
+				w.Header().Set("Content-Disposition", "attachment; filename="+filepath.Base(path))
+				w.Header().Set("Content-Type", "application/octet-stream")
+			}
 			http.ServeFile(w, r, path)
 		})
 	default:
