@@ -9,5 +9,6 @@ I use `python -m http.server` a lot, but it likes to complain about broken pipes
 ###### usage
 
 ```
-$ serve [host]:<port>
+$ serve [-addr [host]:<port>] download [-attachment] [path]
+$ serve [-addr [host]:<port>] upload [dir]
 ```
